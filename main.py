@@ -1,6 +1,23 @@
 MAX_WORD_LENGTH = 11
 MIN_WORD_LENGTH = 5
 
+def gui(w):
+    print("\t\t______________")
+    print("\t\t|             |")
+    print("\t\t|             |")
+    print("\t\t              |")
+    print("\t\t              |")
+    print("\t\t              |")
+    print("\t\t              |")
+    print("\t\t              |")
+    print("\t\t              |")
+    print("\t\t              |")
+    print("\t\t           _______")
+    for n in range(len(w)):
+        print("_ ", end="")
+
+    print("\n")
+    
 def start():
     """
     function that starts the hangman game
@@ -12,10 +29,14 @@ def start():
 
     game_end = False
     guess_letter = ""
-    while not game_end:
-        while
-        guess_letter = input("Guess the next letter")
-
+    while not game_end: #while game is running
+        gui(word)
+        guess_letter = input("Guess the next letter: ") # Guess a letter
+        for charnum in range(len(word)): #for each letter in the word
+            if guess_letter == word[charnum]:
+                print("This letter exists in the word @pos: ")
+                
+                print(charnum)        
 
 if __name__ == "__main__":
     start()
