@@ -135,15 +135,7 @@ def gui(word, found_list, guesss_list, hang_state):
                 print("_ ", end="")
         print("\n")      
         print("YOU LOSE! BETTER LUCK NEXT TIME!")
-        print("YOU LOSE! BETTER LUCK NEXT TIME!")
-        print("YOU LOSE! BETTER LUCK NEXT TIME!")
-        print("YOU LOSE! BETTER LUCK NEXT TIME!")
-        print("YOU LOSE! BETTER LUCK NEXT TIME!")
         return True
-        
-        
-
-    
     
     
 def start():
@@ -164,36 +156,26 @@ def start():
         game_end = gui(word,found_list, guess_list, hang_state)
         if game_end == False:
             guess_letter = input("Guess the next letter: ").lower() # Guess a letter
-        while(len(guess_letter) > 1 and len(guess_letter) < 1):
-            guess_letter = input("Guess the next letter: ").lower() # Guess a letter
-        while guess_letter in guess_list or guess_letter in found_list:
-            print("You already guessed this letter!")
-            guess_letter = input("Guess the next letter: ").lower() # Guess a letter
-        for charnum in range(len(word)): #for each letter in the word
+            while(len(guess_letter) > 1 or len(guess_letter) < 1):
+                print("The letter must be length 1")
+                guess_letter = input("Guess the next letter: ").lower() # Guess a letter
+            while guess_letter in guess_list or guess_letter in found_list:
+                print("You already guessed this letter!")
+                guess_letter = input("Guess the next letter: ").lower() # Guess a letter
+            for charnum in range(len(word)): #for each letter in the word
         
-            if guess_letter == word[charnum]:
-                print("This letter exists in the word @pos: ")
-                print(charnum)
-                if found_list[charnum] == "":
-                    found_list[charnum] = guess_letter.lower()
-                print("This is the list of found letters:" + str(found_list))
-            else:
-                if charnum == (len(word) - 1) and guess_letter not in found_list:
-                    print("That letter does not exist in the word...")
-                    guess_list.append(guess_letter.lower())
-                    hang_state += 1
-        finalString = ''.join(found_list)
-        if str(finalString) == str(word):
-            print("YOU WIN!!!!")
-            print("YOU WIN!!!!")
-            print("YOU WIN!!!!")
-            print("YOU WIN!!!!")
-            print("YOU WIN!!!!")
-            print("YOU WIN!!!!")
-            print("YOU WIN!!!!")
-            print("YOU WIN!!!!")
-            print("YOU WIN!!!!")
-            game_end = True
+                if guess_letter == word[charnum]:
+                    if found_list[charnum] == "":
+                        found_list[charnum] = guess_letter.lower()
+                else:
+                    if charnum == (len(word) - 1) and guess_letter not in found_list:
+                        print("That letter does not exist in the word...")
+                        guess_list.append(guess_letter.lower())
+                        hang_state += 1
+            finalString = ''.join(found_list)
+            if str(finalString) == str(word):
+                print("You got it! The word was " + word + "!")
+                game_end = True
 
 if __name__ == "__main__":
     start()
